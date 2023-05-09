@@ -1,0 +1,48 @@
+name: pg-conn-memory-use
+version: '0.0.0.0'
+github: "jship/pg-conn-memory-use"
+license: MIT
+license-file: LICENSE.md
+copyright: 2023 (c) Jason Shipman
+author: "Jason Shipman"
+maintainer: "Jason Shipman"
+synopsis: Memory growth from active and busy PostgreSQL connection
+description: |
+  @pg-conn-memory-use@ demonstrates memory growth from an active and
+  busy PostgreSQL connection.
+category: System
+
+extra-source-files:
+- package.yaml
+- README.md
+- LICENSE.md
+
+ghc-options:
+  - -Wall
+  - -fwarn-tabs
+  - -Wincomplete-uni-patterns
+  - -Wredundant-constraints
+
+library:
+  dependencies:
+  - base
+  - postgresql-simple
+  - text
+  source-dirs: library
+
+executables:
+  producer:
+    source-dirs: app
+    main: producer.hs
+    dependencies:
+    - base
+    - pg-conn-memory-use
+    - postgresql-simple
+
+  consumer:
+    source-dirs: app
+    main: consumer.hs
+    dependencies:
+    - base
+    - pg-conn-memory-use
+    - postgresql-simple

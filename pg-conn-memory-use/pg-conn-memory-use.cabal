@@ -1,0 +1,70 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           pg-conn-memory-use
+version:        0.0.0.0
+synopsis:       Memory growth from active and busy PostgreSQL connection
+description:    @pg-conn-memory-use@ demonstrates memory growth from an active and
+                busy PostgreSQL connection.
+category:       System
+homepage:       https://github.com/jship/pg-conn-memory-use#readme
+bug-reports:    https://github.com/jship/pg-conn-memory-use/issues
+author:         Jason Shipman
+maintainer:     Jason Shipman
+copyright:      2023 (c) Jason Shipman
+license:        MIT
+license-file:   LICENSE.md
+build-type:     Simple
+extra-source-files:
+    package.yaml
+    README.md
+    LICENSE.md
+
+source-repository head
+  type: git
+  location: https://github.com/jship/pg-conn-memory-use
+
+library
+  exposed-modules:
+      PgConnMemoryUse
+      PgConnMemoryUse.Consumer
+      PgConnMemoryUse.Producer
+  other-modules:
+      Paths_pg_conn_memory_use
+  hs-source-dirs:
+      library
+  ghc-options: -Wall -fwarn-tabs -Wincomplete-uni-patterns -Wredundant-constraints
+  build-depends:
+      base
+    , postgresql-simple
+    , text
+  default-language: Haskell2010
+
+executable consumer
+  main-is: consumer.hs
+  other-modules:
+      Paths_pg_conn_memory_use
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -fwarn-tabs -Wincomplete-uni-patterns -Wredundant-constraints
+  build-depends:
+      base
+    , pg-conn-memory-use
+    , postgresql-simple
+  default-language: Haskell2010
+
+executable producer
+  main-is: producer.hs
+  other-modules:
+      Paths_pg_conn_memory_use
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -fwarn-tabs -Wincomplete-uni-patterns -Wredundant-constraints
+  build-depends:
+      base
+    , pg-conn-memory-use
+    , postgresql-simple
+  default-language: Haskell2010
